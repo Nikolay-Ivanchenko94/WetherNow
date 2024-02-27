@@ -1,4 +1,4 @@
-package com.example.wethernow.modelsforecast;
+package com.example.wethernow.models.modelsforecast;
 public class Astro {
     private String sunrise;
     private String sunset;

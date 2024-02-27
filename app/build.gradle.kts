@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.example.wethernow"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.wethernow"
-        minSdk = 31
-        targetSdk = 33
+        minSdk = 26
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -42,7 +42,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("com.android.volley:volley:1.2.1")
     implementation ("com.google.code.gson:gson:2.10.1")
 

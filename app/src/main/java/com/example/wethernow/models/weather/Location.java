@@ -1,4 +1,4 @@
-package com.example.wethernow.models7;
+package com.example.wethernow.models.weather;
 
 public class Location {
 

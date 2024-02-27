@@ -1,8 +1,7 @@
-package com.example.wethernow.modelsforecast;
+package com.example.wethernow.models.modelsforecast;
 
-import com.example.wethernow.models.Current;
-import com.example.wethernow.models.Location;
-import com.example.wethernow.modelsforecast.Forecast;
+import com.example.wethernow.models.weather.Current;
+import com.example.wethernow.models.weather.Location;
 
 public class FutureForecast {
 

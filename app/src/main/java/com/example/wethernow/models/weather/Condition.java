@@ -1,4 +1,4 @@
-package com.example.wethernow.models;
+package com.example.wethernow.models.weather;
 
 public class Condition {
 

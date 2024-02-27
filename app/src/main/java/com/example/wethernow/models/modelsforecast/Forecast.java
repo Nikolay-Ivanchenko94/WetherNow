@@ -1,13 +1,10 @@
-package com.example.wethernow.modelsforecast;
+package com.example.wethernow.models.modelsforecast;
 
 import java.util.List;
 
 public class Forecast {
 
     List<Forecastday> forecastday;
-
-
-
 
     public Forecast(List<Forecastday> forecastday) {
         this.forecastday = forecastday;

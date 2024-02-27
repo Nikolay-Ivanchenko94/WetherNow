@@ -1,6 +1,6 @@
-package com.example.wethernow.modelsforecast;
+package com.example.wethernow.models.modelsforecast;
 
-import com.example.wethernow.modelsforecast.Condition;
+import com.example.wethernow.models.weather.Condition;
 
 public class Day {
     private double maxtemp_c;

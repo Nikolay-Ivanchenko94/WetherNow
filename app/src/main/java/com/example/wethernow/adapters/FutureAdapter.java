@@ -1,7 +1,5 @@
 package com.example.wethernow.adapters;
 
-import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wethernow.R;
-import com.example.wethernow.modelsforecast.Forecastday;
+import com.example.wethernow.models.modelsforecast.Forecastday;
 
 import java.util.ArrayList;
 
 public class FutureAdapter extends RecyclerView.Adapter<FutureAdapter.viewHolder> {
-
-    ImageView imgGlide;
-    private FutureAdapter globalFutureAdapter;
-
-    Context context;
 
     ArrayList<Forecastday> items;
     public
@@ -38,7 +31,7 @@ public class FutureAdapter extends RecyclerView.Adapter<FutureAdapter.viewHolder
         return new viewHolder(inFlate);
     }
 
-    void setitemToAdapter(ArrayList<Forecastday> items) {
+    public void setItemsToAdapter(ArrayList<Forecastday> items) {
         this.items = items;
         notifyDataSetChanged();
     }
@@ -61,13 +54,6 @@ public class FutureAdapter extends RecyclerView.Adapter<FutureAdapter.viewHolder
     public int getItemCount() {
         return items.size();
     }
-
-    public void
-    setitemsToAdapter(ArrayList<Forecastday> items) {
-        this.items = items;
-        notifyDataSetChanged();
-    }
-
 
     public class viewHolder extends RecyclerView.ViewHolder {
         TextView TextViewDay,TextViewStatus,TextViewLow,TextViewHigh;

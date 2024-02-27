@@ -1,6 +1,6 @@
-package com.example.wethernow.modelsforecast;
+package com.example.wethernow.models.modelsforecast;
 
-import com.example.wethernow.modelsforecast.Condition;
+import com.example.wethernow.models.weather.Condition;
 
 public class Hour {
     private long time_epoch;

@@ -1,4 +1,6 @@
-package com.example.wethernow.modelsforecast;
+package com.example.wethernow.models.modelsforecast;
+
+import com.example.wethernow.models.weather.Condition;
 
 import java.util.List;
 
