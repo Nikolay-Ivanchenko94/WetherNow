@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WetherNow</string>
+    <string name="TextViewTomorrow">Завтра</string>
+    <string name="TextViewMostlyCloudy">Переважно хмарно</string>
+    <string name="TextViewRain">Дощ</string>
+    <string name="TextViewWindy">Вітер</string>
+    <string name="TextViewHumidity">Вологість</string>
+    <string name="TextViewDay">День</string>
+    <string name="TextViewStatus">Статус</string>
+</resources>
