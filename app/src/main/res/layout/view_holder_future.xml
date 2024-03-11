@@ -25,21 +25,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
+        android:src="@drawable/humidity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/TextViewDay"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/TextViewStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/TextViewStatus"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/ImageViewPicFuture"
-        app:layout_constraintStart_toEndOf="@id/ImageViewPicFuture"
-        app:layout_constraintTop_toTopOf="@id/ImageViewPicFuture" />
 
     <TextView
         android:id="@+id/TextViewLow"
