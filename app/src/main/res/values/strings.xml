@@ -7,4 +7,6 @@
     <string name="TextViewHumidity">Вологість</string>
     <string name="TextViewDay">День</string>
     <string name="TextViewStatus">Статус</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
