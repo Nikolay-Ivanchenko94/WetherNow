@@ -12,20 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.wethernow.R;
-import com.example.wethernow.databinding.ActivityMainDniproBinding;
 import com.example.wethernow.databinding.FragmentKievBinding;
 
 public class KievFragment extends Fragment {
 
-private FragmentKievBinding binding;
+    private FragmentKievBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentKievBinding.inflate(getLayoutInflater());
-        binding = FragmentKievBinding.inflate(inflater, container,false);
-        return binding.getRoot();
+        View view = inflater.inflate(R.layout.fragment_kiev, container, false);
+        return view;
+
+
     }
-
-
-
 }
