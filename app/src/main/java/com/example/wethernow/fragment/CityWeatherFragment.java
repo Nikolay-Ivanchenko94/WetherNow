@@ -38,17 +38,17 @@ public class CityWeatherFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentCityWeatherBinding.inflate(inflater,container,false);
-        return binding.getRoot();
         requestFutureForecast();
         requestCurrentWeather();
         initRecyclerView();
+        return binding.getRoot();
 
     }
 
 
 
     private void requestFutureForecast() {
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         String URl = "\n" +
                 "https://api.weatherapi.com/v1/forecast.json?key=" +
                 "13c3af20c3e545d79f3125407240401 &q=Dnipropetrovsk&days=7&aqi=no&alerts=no";
@@ -74,7 +74,7 @@ public class CityWeatherFragment extends Fragment {
 
     private void requestCurrentWeather() {
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         String URL = "https://api.weatherapi.com/v1/forecast.json?key=13c3af20c3e545d79f3125407240401" +
                 "&q=Dnipropetrovsk&days=qi=no&alerts=no";
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
@@ -105,7 +105,7 @@ public class CityWeatherFragment extends Fragment {
     }
 
     private void initRecyclerView() {
-        binding.RecylerViewFuture.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,true));
+        binding.RecylerViewFuture.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,true));
         futureAdapter  = new FutureAdapter(new ArrayList<>());
         binding.RecylerViewFuture.setAdapter(futureAdapter);
     }
