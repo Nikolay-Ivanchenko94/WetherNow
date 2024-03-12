@@ -1,6 +1,5 @@
 package com.example.wethernow.models.modelsforecast;
 
-import java.util.Collection;
 import java.util.List;
 
 public class Forecast {
@@ -10,7 +9,7 @@ public class Forecast {
     public Forecast(List<Forecastday> forecastday) {
         this.forecastday = forecastday;
     }
-    public Collection<? extends Forecastday> getForecastday(){
+    public List<Forecastday> getForecastday(){
         return  forecastday;
     }
     public void setForecastday(List<Forecastday> forecastday){

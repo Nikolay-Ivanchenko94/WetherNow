@@ -7,9 +7,4 @@
     <string name="TextViewHumidity">Вологість</string>
     <string name="TextViewDay">День</string>
     <string name="TextViewStatus">Статус</string>
-    <string name="TextViewDnipro">Дніпро</string>
-    <string name="cloudy">Облачно</string>
-    <string name="btnnext7days">Наступні 7 днів</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
