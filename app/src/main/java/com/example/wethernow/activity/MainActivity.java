@@ -1,4 +1,4 @@
-package com.example.wethernow;
+package com.example.wethernow.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(getRequest);
 
     }
+
 
 
 

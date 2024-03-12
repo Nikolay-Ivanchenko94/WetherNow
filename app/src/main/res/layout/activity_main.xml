@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/drawable_weather"
+    android:background="@drawable/weather_fon"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
 
     <ScrollView
@@ -32,7 +32,7 @@
                 android:layout_marginTop="80dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/background_color"
+                android:background="@drawable/background"
                 android:orientation="vertical">
 
 
@@ -93,7 +93,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_color"
+                    android:background="@drawable/background"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -144,6 +144,7 @@
 
                         <ImageView
                             android:id="@+id/ImageViewWindy"
+                            android:background="@drawable/windy"
                             android:layout_width="40dp"
                             android:layout_height="40dp" />
 
@@ -172,13 +173,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
-                        android:background="@drawable/background_color"
+                        android:background="@drawable/background"
                         android:orientation="vertical"
                         android:padding="8dp">
 
 
                         <ImageView
                             android:id="@+id/ImageViewHumidityMain"
+                            android:background="@drawable/humidity"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="45dp" />
