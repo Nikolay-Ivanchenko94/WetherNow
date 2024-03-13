@@ -42,11 +42,12 @@ public class CityWeatherFragment extends Fragment {
         requestFutureForecast();
         requestCurrentWeather();
         initRecyclerView();
-        return binding.getRoot();
-
         binding.btnmap.setOnClickListener(v -> {Intent intent = new Intent(CityWeatherFragment.this, MapFragment.class);
         });
         binding.btn7nextdays.setOnClickListener(v -> {Intent intent = new Intent(CityWeatherFragment.this, WeekWeatherFragment.class)});
+        return binding.getRoot();
+
+
     }
 
 

@@ -12,6 +12,8 @@
 
 
 
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,21 +33,14 @@
             android:layout_height="wrap_content">
 
 
+    <Button
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+        android:id="@+id/btnmap"
+        android:background="@drawable/map"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"/>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/btnmap"
-                    android:layout_marginTop="375dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/map"/>
-
-
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -256,6 +251,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="410dp"
                 android:nestedScrollingEnabled="true" />
+
+
 
         </RelativeLayout>
 
