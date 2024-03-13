@@ -1,5 +1,6 @@
 package com.example.wethernow.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -42,6 +43,10 @@ public class CityWeatherFragment extends Fragment {
         requestCurrentWeather();
         initRecyclerView();
         return binding.getRoot();
+
+        binding.btnmap.setOnClickListener(v -> {Intent intent = new Intent(CityWeatherFragment.this, MapFragment.class);
+        });
+        binding.btn7nextdays.setOnClickListener(v -> {Intent intent = new Intent(CityWeatherFragment.this, WeekWeatherFragment.class)});
     }
 
 

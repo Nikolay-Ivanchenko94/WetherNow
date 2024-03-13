@@ -23,8 +23,6 @@ public class WeekWeatherFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentWeekWeatherBinding.inflate(inflater,container,false);
         return binding.getRoot();
-        binding.Bnt7Days.setOnClickListener(v ->{Intent intent = new Intent(WeekWeatherFragment.this, CityWeatherFragment.class)});
-        binding.BtnMap.setOnClickListener(v -> {Intent intent = new Intent(WeekWeatherFragment.this, MapFragment.class)});
 
     }
 }

@@ -8,44 +8,9 @@
     tools:context=".fragment.WeekWeatherFragment">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-
-    <Button
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/BtnMap"
-        android:background="@drawable/map"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
-
-
-    <Button
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/Bnt7Days"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/btn7days"
-        android:layout_marginLeft="315dp"/>
-
-
-</LinearLayout>
-
-
-    </ScrollView>
 
 
 
