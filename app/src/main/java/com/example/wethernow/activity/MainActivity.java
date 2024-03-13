@@ -1,6 +1,7 @@
 package com.example.wethernow.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
@@ -11,8 +12,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.wethernow.R;
 import com.example.wethernow.adapters.FutureAdapter;
 import com.example.wethernow.databinding.ActivityMainBinding;
+import com.example.wethernow.fragment.CityWeatherFragment;
 import com.example.wethernow.models.weather.Weather;
 import com.example.wethernow.models.modelsforecast.Forecastday;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
@@ -26,10 +29,17 @@ public class MainActivity extends AppCompatActivity {
     private  ActivityMainBinding binding;
     private FutureAdapter futureAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
+        setContentView(binding.getRoot());
+
+
+        Fragment cityFragmentWather = new CityWeatherFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.container,cityFragmentWather).commit();
+
+
+
     }
 }
