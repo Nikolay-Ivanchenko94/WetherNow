@@ -42,7 +42,6 @@ public class CityWeatherFragment extends Fragment {
         requestCurrentWeather();
         initRecyclerView();
         return binding.getRoot();
-
     }
 
 
