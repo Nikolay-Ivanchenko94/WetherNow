@@ -35,6 +35,7 @@ public class CityWeatherFragment extends Fragment {
     private FragmentCityWeatherBinding binding;
     private FutureAdapter futureAdapter;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,9 +43,18 @@ public class CityWeatherFragment extends Fragment {
         requestFutureForecast();
         requestCurrentWeather();
         initRecyclerView();
-        binding.btnmap.setOnClickListener(v -> {Intent intent = new Intent(CityWeatherFragment.this, MapFragment.class);
+        binding.btnmap.setOnClickListener(v-> {
+            MapFragment mapFragment = new MapFragment();
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, mapFragment, "fidThisFragment").addToBackStack(null)
+                    .commit();
         });
-        binding.btn7nextdays.setOnClickListener(v -> {Intent intent = new Intent(CityWeatherFragment.this, WeekWeatherFragment.class)});
+        binding.btn7nextdays.setOnClickListener(v -> {
+            WeekWeatherFragment weekWeatherFragment = new WeekWeatherFragment();
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container,weekWeatherFragment,"fingThisFagment").addToBackStack(null)
+                    .commit();
+        });
         return binding.getRoot();
 
 
