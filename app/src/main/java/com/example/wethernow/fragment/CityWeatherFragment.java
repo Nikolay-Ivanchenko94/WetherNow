@@ -112,17 +112,17 @@ public class CityWeatherFragment extends Fragment {
     }
 
     private void setDataToViews(Weather climate) {
-        Glide.with(CityWeatherFragment.this).load("https:" + climate.getCurrent().getCondition().getIcon()).into(binding.imageViewSunnyCloudy);
-        binding.textViewDegreeMain.setText(climate.getCurrent().getTemp_c() + "°C");
-        binding.textViewDegreeRain.setText(climate.getCurrent().getPressure_in() + "%");
-        binding.textViewWindyDegree.setText(climate.getCurrent().getWind_mph() + "M/C");
-        binding.textViewHumidityDegreeMain.setText(climate.getCurrent().getHumidity() + "%");
+        Glide.with(CityWeatherFragment.this).load("https:" + climate.getCurrent().getCondition().getIcon()).into(binding.ivSunnyCloudy);
+        binding.tvDegree.setText(climate.getCurrent().getTemp_c() + "°C");
+        binding.tvDegreeRain.setText(climate.getCurrent().getPressure_in() + "%");
+        binding.tvWindyDegree.setText(climate.getCurrent().getWind_mph() + "M/C");
+        binding.tvHumidityDegree.setText(climate.getCurrent().getHumidity() + "%");
     }
 
     private void initRecyclerView() {
-        binding.recylerViewFuture.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,true));
+        binding.rvFuture.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,true));
         futureAdapter  = new FutureAdapter(new ArrayList<>());
-        binding.recylerViewFuture.setAdapter(futureAdapter);
+        binding.rvFuture.setAdapter(futureAdapter);
     }
 
 

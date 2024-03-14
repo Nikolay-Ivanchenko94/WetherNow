@@ -7,7 +7,7 @@
     android:layout_marginEnd="8dp">
 
     <TextView
-        android:id="@+id/textViewDay"
+        android:id="@+id/tvDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,30 +19,30 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:id="@+id/imageViewPicFuture"
+        android:id="@+id/ivPicFuture"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewDay"
+        app:layout_constraintStart_toEndOf="@+id/tvDay"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/textViewStatus"
+        android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/TextViewStatus"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/imageViewPicFuture"
-        app:layout_constraintStart_toEndOf="@id/imageViewPicFuture"
-        app:layout_constraintTop_toTopOf="@id/imageViewPicFuture" />
+        app:layout_constraintBottom_toBottomOf="@id/ivPicFuture"
+        app:layout_constraintStart_toEndOf="@id/ivPicFuture"
+        app:layout_constraintTop_toTopOf="@id/ivPicFuture" />
 
     <TextView
-        android:id="@+id/textViewLow"
+        android:id="@+id/tvLow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -52,13 +52,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewHigh"
+        android:id="@+id/tvHigh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="35dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textViewLow"
+        app:layout_constraintEnd_toStartOf="@id/tvLow"
         app:layout_constraintTop_toTopOf="parent" />
 
 

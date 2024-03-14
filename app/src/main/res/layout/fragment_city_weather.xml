@@ -56,7 +56,7 @@
 
 
                     <ImageView
-                        android:id="@+id/imageViewSunnyCloudy"
+                        android:id="@+id/ivSunnyCloudy"
                         android:layout_width="170dp"
                         android:layout_height="170dp" />
 
@@ -68,7 +68,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewTomorrowDnipro"
+                            android:id="@+id/tvTomorrow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
@@ -79,7 +79,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewDegreeMain"
+                            android:id="@+id/tvDegree"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -89,7 +89,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewMostlyCloudyMain"
+                            android:id="@+id/tvMostlyCloudy"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/TextViewMostlyCloudy"
@@ -117,7 +117,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/imageViewRainDnipro"
+                            android:id="@+id/ivRain"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="15dp"
@@ -125,7 +125,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewDegreeRain"
+                            android:id="@+id/tvDegreeRain"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
@@ -136,7 +136,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewRainMainDnipro"
+                            android:id="@+id/tvRain"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
@@ -156,14 +156,14 @@
 
 
                         <ImageView
-                            android:id="@+id/imageViewWindy"
+                            android:id="@+id/ivWindy"
                             android:background="@drawable/windy"
                             android:layout_width="40dp"
                             android:layout_height="40dp" />
 
 
                         <TextView
-                            android:id="@+id/textViewWindyDegree"
+                            android:id="@+id/tvWindyDegree"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -172,7 +172,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewWindyMain"
+                            android:id="@+id/tvWindy"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/TextViewWindy"
@@ -192,7 +192,7 @@
 
 
                         <ImageView
-                            android:id="@+id/imageViewHumidityMain"
+                            android:id="@+id/ivHumidity"
                             android:background="@drawable/humidity"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
@@ -200,7 +200,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewHumidityDegreeMain"
+                            android:id="@+id/tvHumidityDegree"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="45dp"
@@ -209,7 +209,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/textViewHumidityMainDnipro"
+                            android:id="@+id/tvHumidity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
@@ -242,7 +242,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recylerViewFuture"
+                android:id="@+id/rvFuture"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="410dp"
