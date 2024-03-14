@@ -7,7 +7,7 @@
     android:layout_marginEnd="8dp">
 
     <TextView
-        android:id="@+id/TextViewDay"
+        android:id="@+id/textViewDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,14 +19,14 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:id="@+id/ImageViewPicFuture"
+        android:id="@+id/imageViewPicFuture"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/TextViewDay"
+        app:layout_constraintStart_toEndOf="@+id/textViewDay"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -37,12 +37,12 @@
         android:layout_marginStart="16dp"
         android:text="@string/TextViewStatus"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/ImageViewPicFuture"
-        app:layout_constraintStart_toEndOf="@id/ImageViewPicFuture"
-        app:layout_constraintTop_toTopOf="@id/ImageViewPicFuture" />
+        app:layout_constraintBottom_toBottomOf="@id/imageViewPicFuture"
+        app:layout_constraintStart_toEndOf="@id/imageViewPicFuture"
+        app:layout_constraintTop_toTopOf="@id/imageViewPicFuture" />
 
     <TextView
-        android:id="@+id/TextViewLow"
+        android:id="@+id/textViewLow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -52,13 +52,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TextViewHigh"
+        android:id="@+id/textViewHigh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="35dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/TextViewLow"
+        app:layout_constraintEnd_toStartOf="@id/textViewLow"
         app:layout_constraintTop_toTopOf="parent" />
 
 

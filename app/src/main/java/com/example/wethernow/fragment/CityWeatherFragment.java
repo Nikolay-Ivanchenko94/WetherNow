@@ -43,13 +43,13 @@ public class CityWeatherFragment extends Fragment {
         requestFutureForecast();
         requestCurrentWeather();
         initRecyclerView();
-        binding.btnmap.setOnClickListener(v-> {
+        binding.btnMap.setOnClickListener(v-> {
             MapFragment mapFragment = new MapFragment();
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, mapFragment, "fidThisFragment").addToBackStack(null)
                     .commit();
         });
-        binding.btn7nextdays.setOnClickListener(v -> {
+        binding.btn7NextDays.setOnClickListener(v -> {
             WeekWeatherFragment weekWeatherFragment = new WeekWeatherFragment();
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container,weekWeatherFragment,"fingThisFagment").addToBackStack(null)
@@ -113,16 +113,16 @@ public class CityWeatherFragment extends Fragment {
 
     private void setDataToViews(Weather climate) {
         Glide.with(CityWeatherFragment.this).load("https:" + climate.getCurrent().getCondition().getIcon()).into(binding.ImageViewSunnyCloudy);
-        binding.TextViewDegreeMain.setText(climate.getCurrent().getTemp_c() + "°C");
-        binding.TextViewDegreeRain.setText(climate.getCurrent().getPressure_in() + "%");
-        binding.TextViewWindyDegree.setText(climate.getCurrent().getWind_mph() + "M/C");
-        binding.TextViewHumidityDegreeMain.setText(climate.getCurrent().getHumidity() + "%");
+        binding.textViewDegreeMain.setText(climate.getCurrent().getTemp_c() + "°C");
+        binding.textViewDegreeRain.setText(climate.getCurrent().getPressure_in() + "%");
+        binding.textViewWindyDegree.setText(climate.getCurrent().getWind_mph() + "M/C");
+        binding.textViewHumidityDegreeMain.setText(climate.getCurrent().getHumidity() + "%");
     }
 
     private void initRecyclerView() {
-        binding.RecylerViewFuture.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,true));
+        binding.recylerViewFuture.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,true));
         futureAdapter  = new FutureAdapter(new ArrayList<>());
-        binding.RecylerViewFuture.setAdapter(futureAdapter);
+        binding.recylerViewFuture.setAdapter(futureAdapter);
     }
 
 

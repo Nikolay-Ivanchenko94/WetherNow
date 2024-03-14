@@ -40,11 +40,11 @@ public class FutureAdapter extends RecyclerView.Adapter<FutureAdapter.viewHolder
     @Override
     public void onBindViewHolder(@NonNull FutureAdapter.viewHolder holder, int position) {
         // String holderStatus = getConditionName(items.get(position).getCondition().getCode());//
-        //holder.TextViewStatus.setText(holderStatus);//
-        holder.TextViewDay.setText(String.valueOf(items.get(position).getDate()));
+        //holder.textViewStatus.setText(holderStatus);//
+        holder.textViewDay.setText(String.valueOf(items.get(position).getDate()));
         //  holder.TextViewStatus.setText(String.valueOf(items.get(position).getDay().getCondition().getText()));//
-        holder.TextViewHigh.setText(String.valueOf(items.get(position).getDay().getMaxtemp_c()));
-        holder.TextViewLow.setText(String.valueOf(items.get(position).getDay().getMintemp_c()));
+        holder.textViewHigh.setText(String.valueOf(items.get(position).getDay().getMaxtemp_c()));
+        holder.textViewLow.setText(String.valueOf(items.get(position).getDay().getMintemp_c()));
         // Glide.with(holder.itemView.getContext()).load("https:" + items.get(position).getCondition().getIcon()).into(holder.ImageViewPicFuture);//
     }
 
@@ -56,17 +56,17 @@ public class FutureAdapter extends RecyclerView.Adapter<FutureAdapter.viewHolder
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-        TextView TextViewDay,TextViewStatus,TextViewLow,TextViewHigh;
-        ImageView ImageViewPicFuture;
+        TextView textViewDay,textViewStatus,textViewLow,textViewHigh;
+        ImageView imageViewPicFuture;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
-            TextViewDay = itemView.findViewById(R.id.TextViewDay);
-            TextViewStatus= itemView.findViewById(R.id.TextViewStatus);
-            TextViewHigh = itemView.findViewById(R.id.TextViewHigh);
-            TextViewLow = itemView.findViewById(R.id.TextViewLow);
-            ImageViewPicFuture = itemView.findViewById(R.id.ImageViewPicFuture);
+            textViewDay = itemView.findViewById(R.id.textViewDay);
+          ///  textViewStatus= itemView.findViewById(R.id.textViewStatus);///
+            textViewHigh = itemView.findViewById(R.id.textViewHigh);
+            textViewLow = itemView.findViewById(R.id.textViewLow);
+            imageViewPicFuture = itemView.findViewById(R.id.imageViewPicFuture);
 
         }
     }
