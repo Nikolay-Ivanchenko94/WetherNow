@@ -112,7 +112,7 @@ public class CityWeatherFragment extends Fragment {
     }
 
     private void setDataToViews(Weather climate) {
-        Glide.with(CityWeatherFragment.this).load("https:" + climate.getCurrent().getCondition().getIcon()).into(binding.ImageViewSunnyCloudy);
+        Glide.with(CityWeatherFragment.this).load("https:" + climate.getCurrent().getCondition().getIcon()).into(binding.imageViewSunnyCloudy);
         binding.textViewDegreeMain.setText(climate.getCurrent().getTemp_c() + "°C");
         binding.textViewDegreeRain.setText(climate.getCurrent().getPressure_in() + "%");
         binding.textViewWindyDegree.setText(climate.getCurrent().getWind_mph() + "M/C");
