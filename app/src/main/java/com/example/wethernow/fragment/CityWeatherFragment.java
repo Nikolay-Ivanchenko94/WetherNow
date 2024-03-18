@@ -41,7 +41,6 @@ public class CityWeatherFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentCityWeatherBinding.inflate(inflater,container,false);requestFutureForecast();
            requestCurrentWeather();
-           initRecyclerView();
            binding.btnmap.setOnClickListener(v-> {
             MapFragment mapFragment = new MapFragment();
             getActivity().getSupportFragmentManager().beginTransaction()
@@ -118,11 +117,7 @@ public class CityWeatherFragment extends Fragment {
         binding.tvHumidityDegree.setText(climate.getCurrent().getHumidity() + "%");
     }
 
-    private void initRecyclerView() {
-        binding.rvFuture.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,true));
-        futureAdapter  = new FutureAdapter(new ArrayList<>());
-        binding.rvFuture.setAdapter(futureAdapter);
-    }
+
 
 
 }
