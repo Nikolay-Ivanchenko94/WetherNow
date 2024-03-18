@@ -39,16 +39,15 @@ public class CityWeatherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentCityWeatherBinding.inflate(inflater,container,false);
-        requestFutureForecast();
-        requestCurrentWeather();
-        initRecyclerView();
-        binding.btnMap.setOnClickListener(v-> {
+        binding = FragmentCityWeatherBinding.inflate(inflater,container,false);requestFutureForecast();
+           requestCurrentWeather();
+           initRecyclerView();
+           binding.btnmap.setOnClickListener(v-> {
             MapFragment mapFragment = new MapFragment();
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, mapFragment, "fidThisFragment").addToBackStack(null)
                     .commit();
-        });
+       });
         binding.btn7NextDays.setOnClickListener(v -> {
             WeekWeatherFragment weekWeatherFragment = new WeekWeatherFragment();
             getActivity().getSupportFragmentManager().beginTransaction()

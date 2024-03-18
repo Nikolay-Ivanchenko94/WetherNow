@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,252 +10,221 @@
     tools:context=".fragment.CityWeatherFragment">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+
+
+      <Button
+          android:id="@+id/btnmap"
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:background="@drawable/map"
+          tools:layout_editor_absoluteX="16dp"
+          tools:layout_editor_absoluteY="16dp" />
+
+
+      <ImageView
+          android:id="@+id/birch"
+          android:layout_width="380dp"
+          android:layout_height="330dp"
+          android:layout_marginTop="16dp"
+          android:background="@drawable/background"
+          app:layout_constraintTop_toBottomOf="@+id/btnmap"
+          tools:layout_editor_absoluteX="16dp" />
+
+
+
+      <ImageView
+          android:id="@+id/ivSunnyCloudy"
+          android:layout_width="170dp"
+          android:layout_height="170dp"
+          android:layout_marginTop="20dp"
+          app:layout_constraintStart_toStartOf="@+id/btnmap"
+          app:layout_constraintTop_toBottomOf="@+id/btnmap"/>
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvTomorow"
+          android:text="Завтра"
+          android:textSize="25sp"
+          android:textColor="@color/white"
+          app:layout_constraintTop_toBottomOf="@+id/btnmap"
+          android:layout_marginTop="30dp"
+          app:layout_constraintStart_toEndOf="@+id/btnmap"
+          android:layout_marginLeft="260dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvDegree"
+          android:text="8°"
+          android:textColor="@color/white"
+          android:textSize="45dp"
+          app:layout_constraintTop_toBottomOf="@+id/tvTomorow"
+          app:layout_constraintStart_toEndOf="@+id/tvTomorow"
+          android:layout_marginLeft="280dp"/>
+
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvStatus"
+          android:text="Дощ"
+          android:textColor="@color/white"
+          android:textSize="20sp"
+          app:layout_constraintTop_toBottomOf="@+id/tvDegree"
+          android:layout_marginLeft="275dp"/>
+
+
+
+
+      <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:id="@+id/ivRain"
+          android:background="@drawable/rain"
+          app:layout_constraintTop_toBottomOf="@+id/tvStatus"
+          android:layout_marginLeft="45dp"
+          android:layout_marginTop="70dp"
+          app:layout_constraintStart_toStartOf="@+id/ivSunnyCloudy"/>
+
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvDegreeRain"
+          android:text="93%"
+          android:textColor="@color/white"
+          android:textSize="15sp"
+          app:layout_constraintTop_toBottomOf="@+id/ivRain"
+          android:layout_marginLeft="65dp"
+          android:layout_marginTop="10dp"/>
+
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvRain"
+          android:text="Дощ"
+          android:textColor="@color/white"
+          android:textSize="15sp"
+          app:layout_constraintTop_toBottomOf="@+id/tvDegreeRain"
+          android:layout_marginLeft="65dp"/>
 
 
 
+      <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:id="@+id/ivWindy"
+          android:background="@drawable/windy"
+          app:layout_constraintTop_toBottomOf="@+id/tvStatus"
+          android:layout_marginLeft="180dp"
+          app:layout_constraintStart_toStartOf="@+id/ivSunnyCloudy"
+          android:layout_marginTop="70dp"/>
+      
+      
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvWindyDegree"
+          android:text="55 M/C"
+          android:textSize="15sp"
+          android:textColor="@color/white"
+          app:layout_constraintTop_toBottomOf="@+id/ivWindy"
+          android:layout_marginLeft="190dp"
+          android:layout_marginTop="10dp"/>
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvWindy"
+          android:text="Вітряно"
+          android:textSize="15sp"
+          android:textColor="@color/white"
+          app:layout_constraintTop_toBottomOf="@+id/tvWindyDegree"
+          android:layout_marginLeft="190dp"/>
 
 
-    <Button
-    android:layout_width="30dp"
-    android:layout_height="30dp"
-        android:id="@+id/btnMap"
-        android:background="@drawable/map"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="10dp"/>
 
+      <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:id="@+id/ivHumidity"
+          android:background="@drawable/humidity"
+          app:layout_constraintTop_toBottomOf="@+id/tvStatus"
+          android:layout_marginLeft="305dp"
+          android:layout_marginTop="70dp"
+          app:layout_constraintStart_toStartOf="@+id/ivSunnyCloudy"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/background"
-                android:orientation="vertical">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvHumidityDegree"
+          android:text="1%"
+          android:textSize="15sp"
+          android:textColor="@color/white"
+          app:layout_constraintTop_toBottomOf="@+id/ivWindy"
+          android:layout_marginLeft="330dp"
+          android:layout_marginTop="10dp"/>
 
-                    <ImageView
-                        android:id="@+id/ivSunnyCloudy"
-                        android:layout_width="170dp"
-                        android:layout_height="170dp" />
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
 
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/tvHumidity"
+          android:text="Вологість"
+          android:textSize="15sp"
+          android:textColor="@color/white"
+          app:layout_constraintTop_toBottomOf="@+id/tvHumidityDegree"
+          android:layout_marginLeft="310dp"/>
 
-                        <TextView
-                            android:id="@+id/tvTomorrow"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="@string/TextViewTomorrow"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="25sp" />
-
-
-                        <TextView
-                            android:id="@+id/tvDegree"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="50dp" />
 
-
-                        <TextView
-                            android:id="@+id/tvMostlyCloudy"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/TextViewMostlyCloudy"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
-
-
-                    </LinearLayout>
 
-                </LinearLayout>
 
+         <TextView
+             android:layout_width="35dp"
+             android:layout_height="35dp"
+             android:id="@+id/btn7NextDays"
+             android:background="@drawable/btn7days"
+             app:layout_constraintTop_toBottomOf="@+id/tvHumidityDegree"
+             android:layout_marginTop="75dp"
+             app:layout_constraintStart_toStartOf="@+id/tvHumidityDegree"
+             android:layout_marginLeft="25dp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/background"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="0.444"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/ivRain"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="15dp"
-                            android:background="@drawable/rain" />
-
-
-                        <TextView
-                            android:id="@+id/tvDegreeRain"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="5dp"
-                            android:text="72%"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
 
 
-                        <TextView
-                            android:id="@+id/tvRain"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:text="@string/TextViewRain"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
+      <androidx.recyclerview.widget.RecyclerView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:id="@+id/rvFuture"
+          app:layout_constraintTop_toBottomOf="@+id/btn7NextDays"/>
 
 
-                    </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="0.222"
-                        android:orientation="vertical">
 
 
-                        <ImageView
-                            android:id="@+id/ivWindy"
-                            android:background="@drawable/windy"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp" />
 
 
-                        <TextView
-                            android:id="@+id/tvWindyDegree"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/white"
-                            android:textSize="17sp" />
 
 
-                        <TextView
-                            android:id="@+id/tvWindy"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/TextViewWindy"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
 
 
-                    </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/background"
-                        android:orientation="vertical"
-                        android:padding="8dp">
 
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <ImageView
-                            android:id="@+id/ivHumidity"
-                            android:background="@drawable/humidity"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="45dp" />
 
 
-                        <TextView
-                            android:id="@+id/tvHumidityDegree"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="45dp"
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/tvHumidity"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:textColor="@color/white"
-                            android:text="@string/TextViewHumidity"
-                            android:textSize="20sp" />
-
-
-
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-
-
-
-            <Button
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/btn7NextDays"
-                android:background="@drawable/btn7days"
-                android:layout_marginTop="375dp"
-                android:layout_marginLeft="360dp"/>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFuture"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="410dp"
-                android:nestedScrollingEnabled="true" />
-
-
-
-        </RelativeLayout>
-
-
-    </ScrollView>
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
