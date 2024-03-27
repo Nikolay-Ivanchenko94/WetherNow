@@ -40,6 +40,7 @@ public class CityWeatherFragment extends Fragment {
     private RecyclerView rvHourly;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,8 +66,10 @@ public class CityWeatherFragment extends Fragment {
     }
 
     private void unitRecyclerView() {
-        rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
-        rvHourly.setAdapter(hourlyAdapter);
+     binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
+     hourlyAdapter = new HourlyAdapter(new ArrayList<>());
+     rvHourly = new RecyclerView(rvHourly.getContext());
+     binding.rvHourly.setAdapter(hourlyAdapter);
     }
 
 
@@ -95,8 +98,8 @@ public class CityWeatherFragment extends Fragment {
 
     private void requestCurrentWeather() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "http://api.weatherapi.com/v1/current.json?key=13c3af20c3e545d79f3125407240401" +
-                " &q=Dnipropetrovsk&aqi=no";
+        String URL = "http://api.weatherapi.com/v1/current.json?key=13c3af20c3e545d79f3125407240401\" +\n" +
+                "\" &q=Dnipropetrovsk&aqi=no";
         StringRequest getRequest = new StringRequest(Request.Method.GET,URL, response -> {
             Gson gson = new Gson();
             Weather weather = gson.fromJson(response,Weather.class);
