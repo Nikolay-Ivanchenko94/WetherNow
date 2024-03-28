@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.viewHolder> {
 
-    ArrayList<Weather> items;
+    ArrayList<Forecastday> items;
     public
-    HourlyAdapter(ArrayList<Weather> items) {
+    HourlyAdapter(ArrayList<Forecastday> items) {
         this.items = items;
     }
 
@@ -33,7 +33,7 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.viewHolder
         return new viewHolder(inFlate);
     }
 
-  public void setHourlyAdapters(ArrayList<Weather> items) {
+  public void setHourlyAdapters(ArrayList<Forecastday> items) {
         this.items = items;
         notifyDataSetChanged();
   }
@@ -41,9 +41,8 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.viewHolder
 
     @Override
     public void onBindViewHolder(@NonNull HourlyAdapter.viewHolder holder, int position) {
-        holder.tvTemp.setText(String.valueOf(items.get(position).getCurrent().getTemp_c()));
-        holder.tvTime.setText(String.valueOf(items.get(position).getCurrent().getLast_updated()));
-        Glide.with(holder.itemView.getContext()).load("https:" + items.get(position).getCurrent().getCondition().getIcon()).into(holder.ivPicPath);
+        holder.tvTemp.setText(String.valueOf(items.get(position).getDay().getAvgtemp_c()));
+
            }
 
     @Override

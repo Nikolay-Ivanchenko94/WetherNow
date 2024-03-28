@@ -22,6 +22,7 @@ import com.example.wethernow.activity.MainActivity;
 import com.example.wethernow.adapters.FutureAdapter;
 import com.example.wethernow.adapters.HourlyAdapter;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
+import com.example.wethernow.models.modelsforecast.Forecast;
 import com.example.wethernow.models.modelsforecast.Forecastday;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
 import com.example.wethernow.models.weather.Weather;
@@ -37,16 +38,16 @@ public class CityWeatherFragment extends Fragment {
 
     private FragmentCityWeatherBinding binding;
     private HourlyAdapter hourlyAdapter;
-    private RecyclerView rvHourly;
+
 
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentCityWeatherBinding.inflate(inflater,container,false);
-           requestFutureWeather();
-           requestCurrentWeather();
+           binding = FragmentCityWeatherBinding.inflate(inflater,container,false);
+           requestHourlyForecast();
+           requestForecastWeather();
            unitRecyclerView();
            binding.btnmap.setOnClickListener(v-> {
             MapFragment mapFragment = new MapFragment();
@@ -65,63 +66,49 @@ public class CityWeatherFragment extends Fragment {
 
     }
 
+    private void requestForecastWeather() {
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        String URL = "https://api.weatherapi.com/v1/forecast.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
+        StringRequest getRequest = new StringRequest(Request.Method.GET,URL, response -> {
+            Gson gson = new Gson();
+            FutureForecast futureForecast = gson.fromJson(response,FutureForecast.class);
+        },
+                error -> Log.d("ERROR", "error" + error.toString())
+        ){
+            @Override
+            public Map<String,String> getHeaders(){return new HashMap<>();}
+        };
+        requestQueue.add(getRequest);
+
+
     private void unitRecyclerView() {
-     binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
-     hourlyAdapter = new HourlyAdapter(new ArrayList<>());
-     rvHourly = new RecyclerView(rvHourly.getContext());
-     binding.rvHourly.setAdapter(hourlyAdapter);
+        binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
+        hourlyAdapter = new HourlyAdapter(new ArrayList<>());
+        binding.rvHourly.setAdapter(hourlyAdapter);
     }
 
-
-
-    private void requestFutureWeather() {
+    private void requestHourlyForecast() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "http://api.weatherapi.com/v1/current.json?key=13c3af20c3e545d79f3125407240401\" +\n" +
-                "                \" &q=Dnipropetrovsk&aqi=no";
-        StringRequest getRequest = new StringRequest(Request.Method.GET,URL,response -> {
+        String URL = "https://api.weatherapi.com/v1/forecast.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
+        StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
             Gson gson = new Gson();
-            Weather weather = gson.fromJson(response,Weather.class);
-            ArrayList<Weather> weathers = new ArrayList<>((Collection) weather.getCurrent());
-            hourlyAdapter.setHourlyAdapters(weathers);
+            FutureForecast futureForecast = gson.fromJson(response,FutureForecast.class);
+            ArrayList<Forecastday> forecastdays = new ArrayList<>(futureForecast.getForecast().getForecastday());
+            hourlyAdapter.setHourlyAdapters(forecastdays);
         },
 
                 error -> Log.d("ERROR", "error" + error.toString())
-        ){
 
+        ) {
             @Override
-            public Map<String,String> getHeaders() {
+            public Map<String, String> getHeaders() {
                 return new HashMap<>();
             }
         };
         requestQueue.add(getRequest);
-        }
-
-    private void requestCurrentWeather() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "http://api.weatherapi.com/v1/current.json?key=13c3af20c3e545d79f3125407240401\" +\n" +
-                "\" &q=Dnipropetrovsk&aqi=no";
-        StringRequest getRequest = new StringRequest(Request.Method.GET,URL, response -> {
-            Gson gson = new Gson();
-            Weather weather = gson.fromJson(response,Weather.class);
-            setDataToViwes(weather);
-        },
-
-                error -> Log.d("ERROR","error" + error.toString())
-                ){
-
-            @Override
-            public  Map<String,String> getHeaders(){
-                return  new HashMap<>();
-            }
-        };
-        requestQueue.add(getRequest);
-        }
 
 
-
-
-    private void setDataToViwes(Weather weather) {
-        binding.tvDate.setText(weather.getCurrent().getLast_updated());
     }
 }
+
 
