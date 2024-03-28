@@ -42,6 +42,7 @@ public class CityWeatherFragment extends Fragment {
 
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,6 +91,9 @@ public class CityWeatherFragment extends Fragment {
     }
 
     private void setDataToViews(Weather weather) {
+        Glide.with(CityWeatherFragment.this).load("https:" + weather.getCurrent().getCondition().getIcon()).into(binding.ivSunnyCloudy);
+        binding.tvDnipro.setText(String.valueOf(weather.getLocation().getname()));
+        binding.tvSnow.setText(String.valueOf(weather.getCurrent().getCondition().getText()));
         binding.tvDate.setText(String.valueOf(weather.getCurrent().getLast_updated()));
         binding.tvDegree.setText(String.valueOf(weather.getCurrent().getTemp_c() + "°"));
         binding.tvDegreeRain.setText(String.valueOf(weather.getCurrent().getPrecip_in() + "%"));
