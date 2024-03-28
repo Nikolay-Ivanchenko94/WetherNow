@@ -77,6 +77,7 @@ public class CityWeatherFragment extends Fragment {
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
             Gson gson = new Gson();
             Weather weather = gson.fromJson(response,Weather.class);
+            setDataToViews(weather);
         },
                 error -> Log.d("ERROR", "error" + error.toString())
         ) {
@@ -86,6 +87,14 @@ public class CityWeatherFragment extends Fragment {
             }
         };
         requestQueue.add(getRequest);
+    }
+
+    private void setDataToViews(Weather weather) {
+        binding.tvDate.setText(String.valueOf(weather.getCurrent().getLast_updated()));
+        binding.tvDegree.setText(String.valueOf(weather.getCurrent().getTemp_c() + "°"));
+        binding.tvDegreeRain.setText(String.valueOf(weather.getCurrent().getPrecip_in() + "%"));
+        binding.tvWindyDegree.setText(String.valueOf(weather.getCurrent().getWind_degree() + "M/C"));
+        binding.tvHumidityDegree.setText(String.valueOf(weather.getCurrent().getHumidity() + "%"));
     }
 
     private void requestForecastWeather() {
