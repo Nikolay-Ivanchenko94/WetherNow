@@ -61,6 +61,7 @@ public class CityWeatherFragment extends Fragment {
 
         requestHourlyForecast();
         requestForecastWeather();
+        requestCurrentWeather();
         unitRecyclerView();
 
 
@@ -68,6 +69,22 @@ public class CityWeatherFragment extends Fragment {
         return binding.getRoot();
 
 
+    }
+
+    private void requestCurrentWeather() {
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        String URL = "https://api.weatherapi.com/v1/current.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
+
+        StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
+        },
+                error -> Log.d("ERROR", "error" + error.toString())
+        ) {
+            @Override
+            public Map<String, String> getHeaders() {
+                return new HashMap<>();
+            }
+        };
+        requestQueue.add(getRequest);
     }
 
     private void requestForecastWeather() {
