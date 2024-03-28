@@ -74,8 +74,9 @@ public class CityWeatherFragment extends Fragment {
     private void requestCurrentWeather() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         String URL = "https://api.weatherapi.com/v1/current.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
-
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
+            Gson gson = new Gson();
+            Weather weather = gson.fromJson(response,Weather.class);
         },
                 error -> Log.d("ERROR", "error" + error.toString())
         ) {
