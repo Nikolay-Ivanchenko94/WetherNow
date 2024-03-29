@@ -16,10 +16,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.wethernow.R;
-import com.example.wethernow.adapters.Adapters;
-import com.example.wethernow.adapters.HourlyAdapter;
+import com.example.wethernow.adapters.HoursAdapter;
+import com.example.wethernow.adapters.HoursAdapter;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
-import com.example.wethernow.models.modelsforecast.Forecastday;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
 import com.example.wethernow.models.modelsforecast.Hour;
 import com.example.wethernow.models.weather.Weather;
@@ -33,7 +32,9 @@ import java.util.Map;
 public class CityWeatherFragment extends Fragment {
 
     private FragmentCityWeatherBinding binding;
-    private Adapters adapters;
+    private HoursAdapter hoursAdapters;
+
+    
 
 
 
@@ -59,8 +60,8 @@ public class CityWeatherFragment extends Fragment {
 
 
         requestCurrentWeather();
-        requestRecyclerView();
-        requestWeatherAdapter();
+        initRecyclerView();
+        requestHourList();
 
 
 
@@ -69,20 +70,21 @@ public class CityWeatherFragment extends Fragment {
 
     }
 
-    private void requestRecyclerView() {
+    private void initRecyclerView() {
         binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
-        adapters = new Adapters(new ArrayList<>());
-        binding.rvHourly.setAdapter(adapters);
+        hoursAdapters = new HoursAdapter(new ArrayList<>());
+        binding.rvHourly.setAdapter(hoursAdapters);
     }
 
-    private void requestWeatherAdapter() {
+
+    private void requestHourList() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         String URL = "https://api.weatherapi.com/v1/forecast.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
             Gson gson = new Gson();
             FutureForecast futureForecast = gson.fromJson(response, FutureForecast.class);
             ArrayList<Hour> hours = new ArrayList<>(futureForecast.getForecast().getForecastday().get(0).getHour());
-            adapters.setItemsToAdapter(hours);
+            hoursAdapters.setItemsToAdapter(hours);
 
         },
                 error -> Log.d("ERROR", "error" + error.toString())
