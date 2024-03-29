@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.wethernow.R;
+import com.example.wethernow.models.modelsforecast.Forecastday;
 import com.example.wethernow.models.modelsforecast.Hour;
 
 import java.util.ArrayList;
@@ -29,6 +30,11 @@ public class Adapters extends RecyclerView.Adapter<Adapters.viewHolder> {
         View inFlate = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_hourly,parent,false);
         return new Adapters.viewHolder(inFlate);
     }
+    public void setItemsToAdapter(ArrayList<Hour> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public void onBindViewHolder(@NonNull Adapters.viewHolder holder, int position) {

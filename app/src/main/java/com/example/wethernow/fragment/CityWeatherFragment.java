@@ -21,6 +21,7 @@ import com.example.wethernow.adapters.HourlyAdapter;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
 import com.example.wethernow.models.modelsforecast.Forecastday;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
+import com.example.wethernow.models.modelsforecast.Hour;
 import com.example.wethernow.models.weather.Weather;
 import com.google.gson.Gson;
 
@@ -82,6 +83,8 @@ public class CityWeatherFragment extends Fragment {
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
             Gson gson = new Gson();
             FutureForecast futureForecast = gson.fromJson(response, FutureForecast.class);
+            ArrayList<Forecastday> forecastdays = new ArrayList<>(futureForecast.getForecast().getForecastday());
+            hourlyAdapter.setHourlyAdapters(forecastdays);
 
         },
                 error -> Log.d("ERROR", "error" + error.toString())
