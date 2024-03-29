@@ -77,6 +77,10 @@ public class CityWeatherFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         String URL = "https://api.weatherapi.com/v1/forecast.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
+            Gson gson = new Gson();
+            FutureForecast futureForecast = gson.fromJson(response, FutureForecast.class);
+            ArrayList<Forecastday> forecastdays = new ArrayList<>(futureForecast.getForecast().getForecastday());
+            hourlyAdapter.setHourlyAdapters(forecastdays);
         },
                 error -> Log.d("ERROR", "error" + error.toString())
         ){
@@ -95,6 +99,7 @@ public class CityWeatherFragment extends Fragment {
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
             Gson gson = new Gson();
             Weather weather = gson.fromJson(response,Weather.class);
+            setDataToViews(weather);
 
         },
                 error -> Log.d("ERROR", "error" + error.toString())
