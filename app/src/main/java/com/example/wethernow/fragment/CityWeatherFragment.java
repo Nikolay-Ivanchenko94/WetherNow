@@ -79,8 +79,7 @@ public class CityWeatherFragment extends Fragment {
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
             Gson gson = new Gson();
             FutureForecast futureForecast = gson.fromJson(response, FutureForecast.class);
-            ArrayList<Forecastday> forecastdays = new ArrayList<>(futureForecast.getForecast().getForecastday());
-            hourlyAdapter.setHourlyAdapters(forecastdays);
+
         },
                 error -> Log.d("ERROR", "error" + error.toString())
         ){
