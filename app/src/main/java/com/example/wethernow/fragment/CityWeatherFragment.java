@@ -72,7 +72,7 @@ public class CityWeatherFragment extends Fragment {
     }
 
     private void requestRecyclerView() {
-        binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
+        binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
         adapters = new Adapters(new ArrayList<>());
         binding.rvHourly.setAdapter(adapters);
     }
@@ -83,8 +83,8 @@ public class CityWeatherFragment extends Fragment {
         StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
             Gson gson = new Gson();
             FutureForecast futureForecast = gson.fromJson(response, FutureForecast.class);
-            ArrayList<Forecastday> forecastdays = new ArrayList<>(futureForecast.getForecast().getForecastday());
-            hourlyAdapter.setHourlyAdapters(forecastdays);
+            ArrayList<Hour> hours = new ArrayList<>(futureForecast.getForecast().getForecastday().get(0).getHour());
+            adapters.setItemsToAdapter(hours);
 
         },
                 error -> Log.d("ERROR", "error" + error.toString())
