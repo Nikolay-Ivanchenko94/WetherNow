@@ -1,11 +1,9 @@
 package com.example.wethernow.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,18 +16,15 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.wethernow.R;
-import com.example.wethernow.activity.MainActivity;
-import com.example.wethernow.adapters.FutureAdapter;
+import com.example.wethernow.adapters.Adapters;
 import com.example.wethernow.adapters.HourlyAdapter;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
-import com.example.wethernow.models.modelsforecast.Forecast;
 import com.example.wethernow.models.modelsforecast.Forecastday;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
 import com.example.wethernow.models.weather.Weather;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +33,7 @@ public class CityWeatherFragment extends Fragment {
 
     private FragmentCityWeatherBinding binding;
     private HourlyAdapter hourlyAdapter;
+    private Adapters adapters;
 
 
 
@@ -64,6 +60,7 @@ public class CityWeatherFragment extends Fragment {
         requestForecastWeather();
         requestCurrentWeather();
         unitRecyclerView();
+        requestRecyclerView();
         requestWeatherAdapter();
 
 
@@ -71,6 +68,12 @@ public class CityWeatherFragment extends Fragment {
         return binding.getRoot();
 
 
+    }
+
+    private void requestRecyclerView() {
+        binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
+        adapters = new Adapters(new ArrayList<>());
+        binding.rvHourly.setAdapter(adapters);
     }
 
     private void requestWeatherAdapter() {
