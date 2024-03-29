@@ -42,7 +42,6 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.viewHolder
     @Override
     public void onBindViewHolder(@NonNull HourlyAdapter.viewHolder holder, int position) {
         holder.tvTemp.setText(String.valueOf(items.get(position).getDay().getAvgtemp_c()));
-
            }
 
     @Override
