@@ -33,7 +33,6 @@ import java.util.Map;
 public class CityWeatherFragment extends Fragment {
 
     private FragmentCityWeatherBinding binding;
-    private HourlyAdapter hourlyAdapter;
     private Adapters adapters;
 
 
@@ -57,10 +56,9 @@ public class CityWeatherFragment extends Fragment {
                     .commit();
         });
 
-        requestHourlyForecast();
-        requestForecastWeather();
+
+
         requestCurrentWeather();
-        unitRecyclerView();
         requestRecyclerView();
         requestWeatherAdapter();
 
@@ -128,51 +126,10 @@ public class CityWeatherFragment extends Fragment {
         binding.tvHumidityDegree.setText(String.valueOf(weather.getCurrent().getHumidity() + "%"));
     }
 
-    private void requestForecastWeather() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "https://api.weatherapi.com/v1/forecast.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
-        StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
-            Gson gson = new Gson();
-            FutureForecast futureForecast = gson.fromJson(response, FutureForecast.class);
-        },
-                error -> Log.d("ERROR", "error" + error.toString())
-        ) {
-            @Override
-            public Map<String, String> getHeaders() {
-                return new HashMap<>();
-            }
-        };
-        requestQueue.add(getRequest);
-    }
 
-    private void unitRecyclerView() {
-        binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
-        hourlyAdapter = new HourlyAdapter(new ArrayList<>());
-        binding.rvHourly.setAdapter(hourlyAdapter);
-    }
 
-    private void requestHourlyForecast() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "https://api.weatherapi.com/v1/forecast.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
-        StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
-            Gson gson = new Gson();
-            FutureForecast futureForecast = gson.fromJson(response,FutureForecast.class);
-            ArrayList<Forecastday> forecastdays = new ArrayList<>(futureForecast.getForecast().getForecastday());
-            hourlyAdapter.setHourlyAdapters(forecastdays);
-        },
-
-                error -> Log.d("ERROR", "error" + error.toString())
-
-        ) {
-            @Override
-            public Map<String, String> getHeaders() {
-                return new HashMap<>();
-            }
-        };
-        requestQueue.add(getRequest);
 
 
     }
-}
 
 
