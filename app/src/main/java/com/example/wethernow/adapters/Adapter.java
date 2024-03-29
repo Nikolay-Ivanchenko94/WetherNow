@@ -36,6 +36,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.viewHolder> {
     public void onBindViewHolder(@NonNull Adapter.viewHolder holder, int position) {
         holder.tvTemp.setText(String.valueOf(items.get(position).getTemp_c()));
         holder.tvTime.setText(String.valueOf(items.get(position).getTime()));
+        Glide.with(holder.itemView.getContext()).load("https" + items.get(position).getCondition().getIcon()).into(holder.ivPicPath);
     }
 
     @Override

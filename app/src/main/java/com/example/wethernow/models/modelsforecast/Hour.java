@@ -70,6 +70,12 @@ public class Hour {
     public void setIs_day() {
         this.is_day = is_day;
     }
+    public Condition getCondition(){
+        return condition;
+    }
+    public void setCondition(){
+        this.condition = condition;
+    }
     public double getWind_mph() {
         return wind_mph;
     }
