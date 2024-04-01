@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -36,7 +37,6 @@ public class CityWeatherFragment extends Fragment {
 
     private FragmentCityWeatherBinding binding;
     private HoursAdapter hoursAdapters;
-
     private ApiService service;
 
     @Override
@@ -63,15 +63,40 @@ public class CityWeatherFragment extends Fragment {
 
         service = retrofit.create(ApiService.class);
 
+        Retrofit forecastretrofit = new Retrofit.Builder()
+                .baseUrl("https://api.weatherapi.com/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+        service = forecastretrofit.create(ApiService.class);
+
+
         requestCurrentWeather();
         initRecyclerView();
-        requestHourList();
+        requestHour();
 
 
 
         return binding.getRoot();
 
 
+    }
+
+    private void requestHour() {
+        service.getForecastWeather().enqueue(new retrofit2.Callback<FutureForecast>() {
+            @Override
+            public void onResponse(retrofit2.Call<FutureForecast> call, retrofit2.Response<FutureForecast> response) {
+                if (response.isSuccessful() && response.body() != null){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FutureForecast> call, Throwable t) {
+                Log.d("ERROR", "error" + t.toString());
+            }
+
+
+        });
     }
 
     private void initRecyclerView() {
@@ -81,25 +106,7 @@ public class CityWeatherFragment extends Fragment {
     }
 
 
-    private void requestHourList() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "https://api.weatherapi.com/v1/forecast.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
-        StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
-            Gson gson = new Gson();
-            FutureForecast futureForecast = gson.fromJson(response, FutureForecast.class);
-            ArrayList<Hour> hours = new ArrayList<>(futureForecast.getForecast().getForecastday().get(0).getHour());
-            hoursAdapters.setItemsToAdapter(hours);
 
-        },
-                error -> Log.d("ERROR", "error" + error.toString())
-        ){
-            @Override
-            public Map<String, String> getHeaders() {
-                return new HashMap<>();
-            }
-            };
-        requestQueue.add(getRequest);
-        }
 
 
     private void requestCurrentWeather() {
@@ -115,7 +122,7 @@ public class CityWeatherFragment extends Fragment {
             public void onFailure(retrofit2.Call<Weather> call, Throwable t) {
                 Log.d("ERROR", "error" + t.toString());
             }
-        });
+         });
     }
 
     private void setDataToViews(Weather weather) {
