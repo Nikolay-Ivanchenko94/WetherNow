@@ -28,17 +28,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class CityWeatherFragment extends Fragment {
 
     private FragmentCityWeatherBinding binding;
     private HoursAdapter hoursAdapters;
 
-    
-
-
-
-
+    private ApiService service;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,7 +56,12 @@ public class CityWeatherFragment extends Fragment {
                     .commit();
         });
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.weatherapi.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
+        service = retrofit.create(ApiService.class);
 
         requestCurrentWeather();
         initRecyclerView();
@@ -99,22 +103,19 @@ public class CityWeatherFragment extends Fragment {
 
 
     private void requestCurrentWeather() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "https://api.weatherapi.com/v1/current.json?key=13c3af20c3e545d79f3125407240401&q=Dnipropetrovsk&days=qi=no&alerts=no";
-        StringRequest getRequest = new StringRequest(Request.Method.GET, URL, response -> {
-            Gson gson = new Gson();
-            Weather weather = gson.fromJson(response,Weather.class);
-            setDataToViews(weather);
-
-        },
-                error -> Log.d("ERROR", "error" + error.toString())
-        ){
+        service.getCurrentWeather().enqueue(new retrofit2.Callback<Weather>() {
             @Override
-            public Map<String, String> getHeaders() {
-                return new HashMap<>();
+            public void onResponse(retrofit2.Call<Weather> call, retrofit2.Response<Weather> response) {
+                if (response.isSuccessful() && response.body() != null){
+                    setDataToViews(response.body());
+                }
             }
-        };
-        requestQueue.add(getRequest);
+
+            @Override
+            public void onFailure(retrofit2.Call<Weather> call, Throwable t) {
+                Log.d("ERROR", "error" + t.toString());
+            }
+        });
     }
 
     private void setDataToViews(Weather weather) {
