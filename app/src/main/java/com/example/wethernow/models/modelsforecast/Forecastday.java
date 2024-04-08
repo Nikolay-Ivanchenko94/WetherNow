@@ -4,6 +4,8 @@ import com.example.wethernow.models.weather.Condition;
 
 import java.util.List;
 
+
+
 public class Forecastday {
    private String date;
    private Long date_epoch;

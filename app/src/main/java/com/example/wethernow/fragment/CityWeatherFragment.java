@@ -1,32 +1,23 @@
 package com.example.wethernow.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.bumptech.glide.Glide;
 import com.example.wethernow.R;
-import com.example.wethernow.adapters.HoursAdapter;
 import com.example.wethernow.adapters.HoursAdapter;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
 import com.example.wethernow.models.modelsforecast.Hour;
 import com.example.wethernow.models.weather.Weather;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -63,16 +54,13 @@ public class CityWeatherFragment extends Fragment {
 
         service = retrofit.create(ApiService.class);
 
-        Retrofit forecastretrofit = new Retrofit.Builder()
-                .baseUrl("https://api.weatherapi.com/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                                .build();
-        service = forecastretrofit.create(ApiService.class);
 
 
         requestCurrentWeather();
         initRecyclerView();
         requestHour();
+
+
 
 
 
