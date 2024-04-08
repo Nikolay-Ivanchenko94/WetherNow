@@ -1,7 +1,11 @@
 package com.example.wethernow.models.modelsforecast;
 
+import androidx.room.Entity;
+
 import com.example.wethernow.models.weather.Current;
 import com.example.wethernow.models.weather.Location;
+
+@Entity
 
 public class FutureForecast {
 
