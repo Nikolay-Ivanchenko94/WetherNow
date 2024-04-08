@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.room.Room;
 
 import com.bumptech.glide.Glide;
 import com.example.wethernow.R;
 import com.example.wethernow.adapters.HoursAdapter;
+import com.example.wethernow.database.MyDataBase;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
 import com.example.wethernow.models.modelsforecast.Hour;
@@ -77,6 +79,10 @@ public class CityWeatherFragment extends Fragment {
                     FutureForecast futureForecast = response.body();
                     ArrayList<Hour> hours = new ArrayList<>(futureForecast.getForecast().getForecastday().get(0).getHour());
                     hoursAdapters.setItemsToAdapter(hours);
+
+
+                    MyDataBase db = Room.databaseBuilder(getApplicationContext(),
+                            MyDataBase.class, "database-name").build();
                 }
             }
 
