@@ -13,6 +13,7 @@ import androidx.room.Room;
 import com.bumptech.glide.Glide;
 import com.example.wethernow.R;
 import com.example.wethernow.adapters.HoursAdapter;
+import com.example.wethernow.database.HourDB;
 import com.example.wethernow.database.MyDataBase;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
@@ -20,6 +21,9 @@ import com.example.wethernow.models.modelsforecast.Hour;
 import com.example.wethernow.models.weather.Weather;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -81,8 +85,22 @@ public class CityWeatherFragment extends Fragment {
                     hoursAdapters.setItemsToAdapter(hours);
 
 
-                    MyDataBase db = Room.databaseBuilder(getApplicationContext(),
+                    MyDataBase db = Room.databaseBuilder(getActivity().getApplicationContext(),
                             MyDataBase.class, "database-name").build();
+
+
+                    List<HourDB> hourDBList = new ArrayList<>();
+                    for (Hour hour : hours) {
+                        HourDB hourDB = new HourDB();
+                        hourDB.setTime(hour.getTime());
+                        hourDB.setTemp_c(hour.getTemp_c());
+                        hourDB.setIcon(hour.getCondition().getIcon());
+                        hourDBList.add(hourDB);
+                    }
+                    ExecutorService executor = Executors.newSingleThreadExecutor();
+                    executor.execute(() -> {
+                        db.hourDao().insertHourDBList(hourDBList);
+                    });
                 }
             }
 
@@ -98,7 +116,7 @@ public class CityWeatherFragment extends Fragment {
     private void initRecyclerView() {
         binding.rvHourly.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
         hoursAdapters = new HoursAdapter(new ArrayList<>());
-        binding.rvHourly.setAdapter(hoursAdapters);
+         binding.rvHourly.setAdapter(hoursAdapters);
     }
 
 
