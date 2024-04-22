@@ -20,7 +20,8 @@
           android:id="@+id/btnmap"
           android:layout_width="30dp"
           android:layout_height="30dp"
-          android:background="@drawable/map"/>
+          android:background="@drawable/map"
+          tools:ignore="MissingConstraints" />
 
 
       <TextView

@@ -51,7 +51,7 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.viewHolder> 
     public class viewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView tvTemp,tvTime;
+        TextView tvTemp,tvTime; 
         ImageView ivPicPath;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
