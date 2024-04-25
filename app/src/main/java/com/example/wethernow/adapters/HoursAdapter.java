@@ -9,17 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.wethernow.R;
-import com.example.wethernow.models.modelsforecast.Hour;
+import com.example.wethernow.database.HourDB;
 
 import java.util.ArrayList;
 
 public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.viewHolder> {
 
 
-    ArrayList<Hour> items;
-    public HoursAdapter(ArrayList<Hour> items) {
+    ArrayList<HourDB> items;
+    public HoursAdapter(ArrayList<HourDB> items) {
         this.items = items;
     }
 
@@ -29,7 +28,7 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.viewHolder> 
         View inFlate = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_hourly,parent,false);
         return new HoursAdapter.viewHolder(inFlate);
     }
-    public void setItemsToAdapter(ArrayList<Hour> items) {
+    public void setItemsToAdapter(ArrayList<HourDB> items) {
         this.items = items;
         notifyDataSetChanged();
     }
@@ -39,7 +38,7 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.viewHolder> 
     public void onBindViewHolder(@NonNull HoursAdapter.viewHolder holder, int position) {
         holder.tvTemp.setText(String.valueOf(items.get(position).getTemp_c()));
         holder.tvTime.setText(String.valueOf(items.get(position).getTime()));
-        Glide.with(holder.itemView.getContext()).load("https" + items.get(position).getCondition().getIcon()).into(holder.ivPicPath);
+      ///  Glide.with(holder.itemView.getContext()).load("https" + items.get(position).getCondition().getIcon()).into(holder.ivPicPath); ///
     }
 
     @Override

@@ -81,8 +81,6 @@ public class CityWeatherFragment extends Fragment {
             public void onResponse(retrofit2.Call<FutureForecast> call, retrofit2.Response<FutureForecast> response) {
                 if (response.isSuccessful() && response.body() != null){
                     FutureForecast futureForecast = response.body();
-                    ArrayList<Hour> hours = new ArrayList<>(futureForecast.getForecast().getForecastday().get(0).getHour());
-                    hoursAdapters.setItemsToAdapter(hours);
 
 
                     MyDataBase db = Room.databaseBuilder(getActivity().getApplicationContext(),
