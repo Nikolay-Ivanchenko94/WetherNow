@@ -100,6 +100,10 @@ public class CityWeatherFragment extends Fragment {
                     ExecutorService executor = Executors.newSingleThreadExecutor();
                     executor.execute(() -> {
                         db.hourDao().insertHourDBList(hourDBList);
+                        List<HourDB> hourDBS = db.hourDao().getHourDBList();
+                        getActivity().runOnUiThread(() -> {
+                            hoursAdapters.setItemsToAdapter(new ArrayList<>(hourDBS));
+                        });
                     });
                 }
             }
