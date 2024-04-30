@@ -134,6 +134,11 @@ public class CityWeatherFragment extends Fragment {
                 if (response.isSuccessful() && response.body() != null){
                     setDataToViews(response.body());
                 }
+
+
+                MyDataBase db = Room.databaseBuilder(getActivity().getApplicationContext(),
+                        MyDataBase.class, "database-name").build();
+
             }
 
             @Override
