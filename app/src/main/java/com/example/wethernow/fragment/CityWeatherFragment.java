@@ -15,7 +15,7 @@ import com.example.wethernow.R;
 import com.example.wethernow.adapters.HoursAdapter;
 import com.example.wethernow.database.HourDB;
 import com.example.wethernow.database.MyDataBase;
-import com.example.wethernow.database.WeatherDao;
+import com.example.wethernow.database.WeatherDB;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
 import com.example.wethernow.models.modelsforecast.Hour;
@@ -140,8 +140,24 @@ public class CityWeatherFragment extends Fragment {
                 MyDataBase myDataBase = Room.databaseBuilder(getActivity().getApplicationContext(),
                         MyDataBase.class, "database-name").build();
 
-                WeatherDao weatherDao = myDataBase.weatherDao();
+                List<WeatherDB> weatherDBList = new ArrayList<>();
+                WeatherDB weatherDB = new WeatherDB();
+                weatherDB.setName(weatherDB.getName());
+                weatherDB.setText(weatherDB.getText());
+                weatherDB.setLast_updated(weatherDB.getLast_updated());
+                weatherDB.setPrecip_in(weatherDB.getPrecip_in());
+                weatherDB.setTemp_c(weatherDB.getTemp_c());
+                weatherDB.setWind_degree(weatherDB.getWind_degree());
+                weatherDB.setHumidity(weatherDB.getHumidity());
+                weatherDB.setIcon(weatherDB.getIcon());
 
+
+                ExecutorService executorService = Executors.newSingleThreadExecutor();
+                executorService.execute(() -> {
+                    myDataBase.weatherDao().insertWeatherDBList(weatherDBList);
+                    List<WeatherDB> weatherDBS = myDataBase.weatherDao().getWeatherDBS();
+
+                });
 
 
             }
@@ -153,7 +169,7 @@ public class CityWeatherFragment extends Fragment {
          });
     }
 
-    private void setDataToViews(Weather weather) {
+   private void setDataToViews(Weather weather) {
         Glide.with(CityWeatherFragment.this).load("https:" + weather.getCurrent().getCondition().getIcon()).into(binding.ivSunnyCloudy);
         binding.tvDnipro.setText(String.valueOf(weather.getLocation().getname()));
         binding.tvSnow.setText(String.valueOf(weather.getCurrent().getCondition().getText()));
