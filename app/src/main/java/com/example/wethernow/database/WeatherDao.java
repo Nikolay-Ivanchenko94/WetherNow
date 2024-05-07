@@ -10,7 +10,7 @@ import java.util.List;
 public interface WeatherDao {
 
     @Insert
-    public void insertHourDBList(List<WeatherDB> weatherDBS);
+    public void insertWeatherDBList(List<WeatherDB> weatherDBS);
 
     @Query("SELECT * FROM WeatherDB")
     public List<WeatherDB> getWeatherDBS();

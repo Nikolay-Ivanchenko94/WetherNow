@@ -15,6 +15,7 @@ import com.example.wethernow.R;
 import com.example.wethernow.adapters.HoursAdapter;
 import com.example.wethernow.database.HourDB;
 import com.example.wethernow.database.MyDataBase;
+import com.example.wethernow.database.WeatherDao;
 import com.example.wethernow.databinding.FragmentCityWeatherBinding;
 import com.example.wethernow.models.modelsforecast.FutureForecast;
 import com.example.wethernow.models.modelsforecast.Hour;
@@ -136,8 +137,12 @@ public class CityWeatherFragment extends Fragment {
                 }
 
 
-                MyDataBase db = Room.databaseBuilder(getActivity().getApplicationContext(),
+                MyDataBase myDataBase = Room.databaseBuilder(getActivity().getApplicationContext(),
                         MyDataBase.class, "database-name").build();
+
+                WeatherDao weatherDao = myDataBase.weatherDao();
+
+
 
             }
 
