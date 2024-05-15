@@ -133,31 +133,41 @@ public class CityWeatherFragment extends Fragment {
             @Override
             public void onResponse(retrofit2.Call<Weather> call, retrofit2.Response<Weather> response) {
                 if (response.isSuccessful() && response.body() != null){
-                    setDataToViews(response.body());
+                    Weather weather = response.body();
+
+
+
                 }
 
 
                 MyDataBase myDataBase = Room.databaseBuilder(getActivity().getApplicationContext(),
                         MyDataBase.class, "database-name").build();
 
-                List<WeatherDB> weatherDBList = new ArrayList<>();
-                WeatherDB weatherDB = new WeatherDB();
-                weatherDB.setName(weatherDB.getName());
-                weatherDB.setText(weatherDB.getText());
-                weatherDB.setLast_updated(weatherDB.getLast_updated());
-                weatherDB.setPrecip_in(weatherDB.getPrecip_in());
-                weatherDB.setTemp_c(weatherDB.getTemp_c());
-                weatherDB.setWind_degree(weatherDB.getWind_degree());
-                weatherDB.setHumidity(weatherDB.getHumidity());
-                weatherDB.setIcon(weatherDB.getIcon());
+
+                ArrayList<WeatherDB> weatherDBSList = new ArrayList<>();
+                for (Weather weather :  ) {
+                    WeatherDB weatherDB = new WeatherDB();
+                    weatherDB.setName(weather.getLocation().getname());
+                    weatherDB.setText(weather.getCurrent().getCondition().getText());
+                    weatherDB.setLast_updated(weather.getCurrent().getLast_updated());
+                    weatherDB.setPrecip_in(weather.getCurrent().getPrecip_in());
+                    weatherDB.setTemp_c(weather.getCurrent().getTemp_c());
+                    weatherDB.setWind_degree(weather.getCurrent().getWind_degree());
+                    weatherDB.setHumidity(weather.getCurrent().getHumidity());
+                    weatherDB.setIcon(weather.getCurrent().getCondition().getIcon());
 
 
-                ExecutorService executorService = Executors.newSingleThreadExecutor();
-                executorService.execute(() -> {
-                    myDataBase.weatherDao().insertWeatherDBList(weatherDBList);
-                    List<WeatherDB> weatherDBS = myDataBase.weatherDao().getWeatherDBS();
 
-                });
+                    ExecutorService executor = Executors.newSingleThreadExecutor();
+                    executor.execute(() -> {
+                        myDataBase.weatherDao().insertWeatherDBList(weatherDBSList);
+                        List<WeatherDB> weatherDBS = myDataBase.weatherDao().getWeatherDBS();
+                        getActivity().runOnUiThread(() -> {
+                        });
+                    });
+
+                }
+
 
 
             }
