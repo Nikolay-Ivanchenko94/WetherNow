@@ -133,8 +133,7 @@ public class CityWeatherFragment extends Fragment {
             @Override
             public void onResponse(retrofit2.Call<Weather> call, retrofit2.Response<Weather> response) {
                 if (response.isSuccessful() && response.body() != null){
-                    Weather weather = response.body();
-
+                    setDataToViews(response.body());
 
 
                 }
@@ -145,32 +144,31 @@ public class CityWeatherFragment extends Fragment {
 
 
                 ArrayList<WeatherDB> weatherDBSList = new ArrayList<>();
-                for (Weather weather :  ) {
-                    WeatherDB weatherDB = new WeatherDB();
-                    weatherDB.setName(weather.getLocation().getname());
-                    weatherDB.setText(weather.getCurrent().getCondition().getText());
-                    weatherDB.setLast_updated(weather.getCurrent().getLast_updated());
-                    weatherDB.setPrecip_in(weather.getCurrent().getPrecip_in());
-                    weatherDB.setTemp_c(weather.getCurrent().getTemp_c());
-                    weatherDB.setWind_degree(weather.getCurrent().getWind_degree());
-                    weatherDB.setHumidity(weather.getCurrent().getHumidity());
-                    weatherDB.setIcon(weather.getCurrent().getCondition().getIcon());
+                Weather weather = response.body();
+                WeatherDB weatherDB = new WeatherDB();
+                weatherDB.setName(weather.getLocation().getname());
+                weatherDB.setLast_updated(weather.getCurrent().getLast_updated());
+                weatherDB.setText(weather.getCurrent().getCondition().getText());
+                weatherDB.setTemp_c(weather.getCurrent().getTemp_c());
+                weatherDB.setPrecip_in(weather.getCurrent().getPrecip_in());
+                weatherDB.setWind_degree(weather.getCurrent().getWind_degree());
+                weatherDB.setHumidity(weather.getCurrent().getHumidity());
 
 
+                ExecutorService executor = Executors.newSingleThreadExecutor();
+                executor.execute(() -> {
 
-                    ExecutorService executor = Executors.newSingleThreadExecutor();
-                    executor.execute(() -> {
-                        myDataBase.weatherDao().insertWeatherDBList(weatherDBSList);
-                        List<WeatherDB> weatherDBS = myDataBase.weatherDao().getWeatherDBS();
-                        getActivity().runOnUiThread(() -> {
-                        });
+                    myDataBase.weatherDao().insertWeatherDBList(weatherDBSList);
+                    List<WeatherDB> weatherDBS = myDataBase.weatherDao().getWeatherDBS();
+                    getActivity().runOnUiThread(() -> {
+
                     });
-
-                }
+                });
 
 
 
             }
+
 
             @Override
             public void onFailure(retrofit2.Call<Weather> call, Throwable t) {
