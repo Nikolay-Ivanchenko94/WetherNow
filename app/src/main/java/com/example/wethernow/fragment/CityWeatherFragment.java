@@ -133,37 +133,37 @@ public class CityWeatherFragment extends Fragment {
             @Override
             public void onResponse(retrofit2.Call<Weather> call, retrofit2.Response<Weather> response) {
                 if (response.isSuccessful() && response.body() != null){
-                    setDataToViews(response.body());
 
+                    MyDataBase myDataBase = Room.databaseBuilder(getActivity().getApplicationContext(),
+                            MyDataBase.class, "database-name").build();
+
+
+                    ArrayList<WeatherDB> weatherDBSList = new ArrayList<>();
+                    Weather weather = response.body();
+                    WeatherDB weatherDB = new WeatherDB();
+                    weatherDB.setName(weather.getLocation().getname());
+                    weatherDB.setLast_updated(weather.getCurrent().getLast_updated());
+                    weatherDB.setText(weather.getCurrent().getCondition().getText());
+                    weatherDB.setTemp_c(weather.getCurrent().getTemp_c());
+                    weatherDB.setPrecip_in(weather.getCurrent().getPrecip_in());
+                    weatherDB.setWind_degree(weather.getCurrent().getWind_degree());
+                    weatherDB.setHumidity(weather.getCurrent().getHumidity());
+
+
+                    weatherDBSList.add(weatherDB);
+
+                    ExecutorService executor = Executors.newSingleThreadExecutor();
+                    executor.execute(() -> {
+
+                        myDataBase.weatherDao().insertWeatherDBList(weatherDBSList);
+                        List<WeatherDB> weatherDBS = myDataBase.weatherDao().getWeatherDBS();
+                        getActivity().runOnUiThread(() -> {
+
+                        });
+                    });
 
                 }
 
-
-                MyDataBase myDataBase = Room.databaseBuilder(getActivity().getApplicationContext(),
-                        MyDataBase.class, "database-name").build();
-
-
-                ArrayList<WeatherDB> weatherDBSList = new ArrayList<>();
-                Weather weather = response.body();
-                WeatherDB weatherDB = new WeatherDB();
-                weatherDB.setName(weather.getLocation().getname());
-                weatherDB.setLast_updated(weather.getCurrent().getLast_updated());
-                weatherDB.setText(weather.getCurrent().getCondition().getText());
-                weatherDB.setTemp_c(weather.getCurrent().getTemp_c());
-                weatherDB.setPrecip_in(weather.getCurrent().getPrecip_in());
-                weatherDB.setWind_degree(weather.getCurrent().getWind_degree());
-                weatherDB.setHumidity(weather.getCurrent().getHumidity());
-
-
-                ExecutorService executor = Executors.newSingleThreadExecutor();
-                executor.execute(() -> {
-
-                    myDataBase.weatherDao().insertWeatherDBList(weatherDBSList);
-                    List<WeatherDB> weatherDBS = myDataBase.weatherDao().getWeatherDBS();
-                    getActivity().runOnUiThread(() -> {
-
-                    });
-                });
 
 
 
