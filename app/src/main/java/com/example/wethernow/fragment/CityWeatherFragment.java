@@ -177,15 +177,16 @@ public class CityWeatherFragment extends Fragment {
          });
     }
 
-   private void setDataToViews(Weather weather) {
-        Glide.with(CityWeatherFragment.this).load("https:" + weather.getCurrent().getCondition().getIcon()).into(binding.ivSunnyCloudy);
-        binding.tvDnipro.setText(String.valueOf(weather.getLocation().getname()));
-        binding.tvSnow.setText(String.valueOf(weather.getCurrent().getCondition().getText()));
-        binding.tvDate.setText(String.valueOf(weather.getCurrent().getLast_updated()));
-        binding.tvDegree.setText(String.valueOf(weather.getCurrent().getTemp_c() + "°"));
-        binding.tvDegreeRain.setText(String.valueOf(weather.getCurrent().getPrecip_in() + "%"));
-        binding.tvWindyDegree.setText(String.valueOf(weather.getCurrent().getWind_degree() + "M/C"));
-        binding.tvHumidityDegree.setText(String.valueOf(weather.getCurrent().getHumidity() + "%"));
+   private void setDataToViews(WeatherDB weather) {
+        binding.tvDnipro.setText(String.valueOf(weather.getName()));
+        Glide.with(CityWeatherFragment.this).load("https:" + weather.getIcon()).into(binding.ivSunnyCloudy);
+        binding.tvSnow.setText(String.valueOf(weather.getText()));
+        binding.tvDate.setText(String.valueOf(weather.getLast_updated()));
+        binding.tvDegree.setText(String.valueOf(weather.getTemp_c() + "°"));
+        binding.tvDegreeRain.setText(weather.getPrecip_in() + "%");
+        binding.tvWindyDegree.setText(weather.getWind_degree() + "M/C");
+        binding.tvHumidityDegree.setText(String.valueOf(weather.getHumidity() + "%"));
+
     }
 
 
