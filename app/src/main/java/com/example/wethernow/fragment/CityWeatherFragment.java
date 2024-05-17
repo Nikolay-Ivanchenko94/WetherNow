@@ -158,7 +158,7 @@ public class CityWeatherFragment extends Fragment {
                         myDataBase.weatherDao().insertWeatherDBList(weatherDBSList);
                         List<WeatherDB> weatherDBS = myDataBase.weatherDao().getWeatherDBS();
                         getActivity().runOnUiThread(() -> {
-
+                            setDataToViews(weatherDB);
                         });
                     });
 
